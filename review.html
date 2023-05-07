@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>True/False Quiz</title>
+    <style>
+      /* Add your own styling here */
+      body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+#quiz {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.question {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.question p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.question button {
+  margin: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.question button:hover {
+  background-color: #ddd;
+}
+
+#score {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.answer {
+        text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <h1>True/False Quiz</h1>
+    <p class="answer">Answer the following questions:</p>
+    <div id="quiz"></div>
+    <p id="score"></p>
+    <script>
+      const questions = [
+        {
+          question: "We should make campaigns to stop pollution.",
+          answer: true
+        },
+        {
+          question: "We should recycle plastic, glass and paper.",
+          answer: true
+        },
+        {
+          question: "We shouldn't use renewable energy resources.",
+          answer: true
+        },
+        {
+          question: "We shouldn't plant more trees and go green.",
+          answer: false
+        },
+        {
+          question: "People pollute the air because they prefer driving their own cars instead of using public transportation.",
+          answer: true
+        },
+        {
+          question: "Factories emit gases into the atmosphere",
+          answer: false
+        },
+        {
+          question: "Global warming is a very big threat to animals.",
+          answer: true
+        },
+        {
+          question: "We still have a chance to save the environment.",
+          answer: false
+        },
+        {
+          question: "Soil and water pollution kills animals.",
+          answer: false
+        },
+        {
+          question: "Factories pour their waste into the ocean",
+          answer: true
+        }
+      ];
+
+      const quiz = document.querySelector('#quiz');
+      const score = document.querySelector('#score');
+      let correctAnswers = 0;
+
+      questions.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.classList.add('question');
+
+        const p = document.createElement('p');
+        p.textContent = `${i + 1}. ${q.question}`;
+        div.appendChild(p);
+
+        const trueButton = document.createElement('button');
+        trueButton.textContent = 'True';
+        trueButton.addEventListener('click', () => {
+          checkAnswer(q, true);
+        });
+        div.appendChild(trueButton);
+
+        const falseButton = document.createElement('button');
+        falseButton.textContent = 'False';
+        falseButton.addEventListener('click', () => {
+          checkAnswer(q, false);
+        });
+        div.appendChild(falseButton);
+
+        quiz.appendChild(div);
+      });
+
+      function checkAnswer(question, answer) {
+        const isCorrect = question.answer === answer;
+        const result = isCorrect ? 'Correct' : 'Incorrect';
+        alert(result);
+        if (isCorrect) {
+          correctAnswers++;
+          score.textContent = `Score: ${correctAnswers}/${questions.length}`;
+        }
+      }
+    </script>
+  </body>
+</html>

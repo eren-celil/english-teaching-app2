@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Tools</title>
+    <style>
+      body {
+        background-color: #0f0f0f;
+        color: #fff;
+       
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 60px;
+        margin: 5px 0;
+        text-align: center;
+      }
+      /* Add CSS for the typewriter animation */
+      .typewriter {
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid white; /* The typewriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em; /* Adjust as needed */
+        animation: 
+          typing 3.5s steps(30, end),
+          blink-caret .75s step-end infinite;
+      }
+      
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      /* The typewriter cursor effect */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white; }
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+      }
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+      }
+      .box:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+      }
+      .box img {
+        width: 400px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .box h2 {
+        font-size: 24px;
+        margin: 0;
+        text-align: center;
+      }
+      .box p {
+        font-size: 18px;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .robotContainer {
+        display: flex;
+        justify-content: center;
+      }
+      
+    </style>
+  </head>
+  <body>
+   <div> <h1 class="typewriter">7-A, look at here. </h1></div>
+   <div class="robotContainer"> <img src="robot.gif" alt="robot"  srcset="" style="height: 200px;"/></div>
+    <div class="container">
+      <div class="box">
+        <a href="https://www.perplexity.ai/" target="_blank">
+          <img src="text.jpg" alt="AI Image Generator" />
+          <h2>AI Chat-bot</h2>
+          </div>
+          <div class="box">
+            <a href="review3.html" target="_blank">
+              <img src="painter.jpg" alt="AI Text Chatbot" />
+              <h2>AI Painter</h2>
+            
+            </a>
+          </div>
+        </div><script>
+          const typewriterEffect = (text, i, fnCallback) => {
+            if (i < text.length) {
+              document.querySelector(".typewriter").innerHTML =
+                text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
+              setTimeout(() => {
+                typewriterEffect(text, i + 1, fnCallback);
+              }, 100);
+            } else if (typeof fnCallback === "function") {
+              setTimeout(fnCallback, 700);
+            }
+          };
+        
+          const startTypewriterEffect = () => {
+            const text = document.querySelector(".typewriter").textContent;
+            typewriterEffect(text, 0, () => {
+              setTimeout(startTypewriterEffect, 2000);
+            });
+          };
+        
+          startTypewriterEffect();
+        </script>
+  </body>
+  </html>        
